@@ -168,6 +168,8 @@ func ConTest() {
 	if err != nil {
 		fmt.Printf("Failed to connect to gateway: %s\n", err)
 		os.Exit(1)
+	} else {
+		fmt.Printf(" gateway: %v\n", gw)
 	}
 	defer gw.Close()
 
