@@ -34,7 +34,7 @@ func populateWallet(wallet *gateway.Wallet) error {
 		return err
 	}
 
-	keyDir := filepath.Join("/root/teamate/BS22_class-examples/teamate/application/msp/users/org1.example.com/keystore/")
+	keyDir := filepath.Join("/root/teamate/BS22_class-examples/teamate/application/msp/org1.example.com/users/keystore/")
 	// there's a single file in this dir containing the private key
 	files, err := ioutil.ReadDir(keyDir)
 	if err != nil {
