@@ -13,6 +13,7 @@ func ConTest() {
 
 	sdk, err := fabsdk.New(cfgProvider)
 	if err != nil {
+		fmt.Print(err)
 		return
 	}
 
