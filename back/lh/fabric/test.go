@@ -88,7 +88,7 @@ func ConTest() {
 		os.Exit(1)
 	}
 
-	contract := network.GetContract("basic")
+	contract := network.GetContractWithName("basic", "basic")
 
 	result, err := contract.EvaluateTransaction("GetAllAssets")
 	if err != nil {
