@@ -148,7 +148,11 @@ func ConTest() {
 		fmt.Printf("Failed to create wallet: %s\n", err)
 		os.Exit(1)
 	}
-	populateWallet(wallet)
+	err = populateWallet(wallet)
+	if err != nil {
+		fmt.Printf("Failed to connect to gateway: %s\n", err)
+		os.Exit(1)
+	}
 	// Path to the network config (CCP) file
 	ccpPath := filepath.Join(
 		ccproot,
