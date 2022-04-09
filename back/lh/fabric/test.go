@@ -16,18 +16,18 @@ func populateWallet(wallet *gateway.Wallet) error {
 
 		"../",
 		"msp",
-		"org1.example.com",
+		"org2.example.com",
 		"users",
 	)
 
-	certPath := filepath.Join(credPath, "signcerts", "User1@org1.example.com-cert.pem")
+	certPath := filepath.Join(credPath, "signcerts", "User1@org2.example.com-cert.pem")
 	// read the certificate pem
 	cert, err := ioutil.ReadFile(filepath.Clean(certPath))
 	if err != nil {
 		return err
 	}
 
-	keyDir := filepath.Join("../msp/org1.example.com/users/keystore/")
+	keyDir := filepath.Join("../msp/org2.example.com/users/keystore/")
 	// there's a single file in this dir containing the private key
 	files, err := ioutil.ReadDir(keyDir)
 	if err != nil {
@@ -42,7 +42,7 @@ func populateWallet(wallet *gateway.Wallet) error {
 		return err
 	}
 
-	identity := gateway.NewX509Identity("Org1MSP", string(cert), string(key))
+	identity := gateway.NewX509Identity("Org2MSP", string(cert), string(key))
 
 	err = wallet.Put("User1", identity)
 	if err != nil {
@@ -68,7 +68,7 @@ func ConTest() {
 	// Path to the network config (CCP) file
 	ccpPath := filepath.Join(
 		ccproot,
-		"connection-org1.yaml",
+		"connection-org2.yaml",
 	)
 
 	// Connect to the gateway peer(s) using the network config and identity in the wallet
