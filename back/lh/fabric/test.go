@@ -9,7 +9,7 @@ import (
 )
 
 func ConTest() {
-	cfgProvider := config.FromFile("/root/teamate/BS22_class-examples/teamate/application/ccp/ccp-template.yaml")
+	cfgProvider := config.FromFile("/root/teamate/BS22_class-examples/teamate/application/ccp/connection-org1.yaml")
 
 	sdk, err := fabsdk.New(cfgProvider)
 	if err != nil {
