@@ -25,7 +25,7 @@ func ConTest() {
 	)
 
 	// Connect to the gateway peer(s) using the network config and identity in the wallet
-	fmt.Printf("ccp : %s", filepath.Clean(ccpPath))
+	fmt.Printf("ccp : %s\n11", filepath.Clean(ccpPath))
 	gw, err := gateway.Connect(
 		gateway.WithConfig(config.FromFile(filepath.Clean(ccpPath))),
 		gateway.WithIdentity(wallet, "appUser"),
