@@ -81,7 +81,7 @@ func ConTest() {
 		os.Exit(1)
 	}
 	defer gw.Close()
-
+	fmt.Print(gw)
 	network, err := gw.GetNetwork("mychannel")
 	if err != nil {
 		fmt.Printf("Failed to get network: %s\n", err)
