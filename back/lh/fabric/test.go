@@ -9,27 +9,21 @@ import (
 )
 
 func ConTest() {
-	cfgProvider1 := config.FromFile("/root/teamate/BS22_class-examples/teamate/application/ccp/connection-org1.yaml")
+	cfgProvider := config.FromFile("/root/teamate/BS22_class-examples/teamate/application/ccp/ccp-template.yaml")
 
-	sdk1, err := fabsdk.New(cfgProvider1)
+	sdk, err := fabsdk.New(cfgProvider)
 	if err != nil {
 		fmt.Print(err)
 		return
 	}
 
-	org1MspClient, err := mspclient.New(sdk1.Context(), mspclient.WithOrg("org1"))
+	org1MspClient, err := mspclient.New(sdk.Context(), mspclient.WithOrg("org1"))
 	if err != nil {
 		return
 	}
 	fmt.Print(org1MspClient)
-	cfgProvider2 := config.FromFile("/root/teamate/BS22_class-examples/teamate/application/ccp/connection-org2.yaml")
 
-	sdk2, err := fabsdk.New(cfgProvider2)
-	if err != nil {
-		fmt.Print(err)
-		return
-	}
-	org2MspClient, err := mspclient.New(sdk2.Context(), mspclient.WithOrg("org2"))
+	org2MspClient, err := mspclient.New(sdk.Context(), mspclient.WithOrg("org2"))
 	if err != nil {
 		return
 	}
