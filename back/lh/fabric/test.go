@@ -27,7 +27,7 @@ func populateWallet(wallet *gateway.Wallet) error {
 		"users",
 	)
 
-	certPath := filepath.Join(credPath, "signcerts", "User1@org1.example.com-cert.epm")
+	certPath := filepath.Join(credPath, "signcerts", "User1@org1.example.com-cert.pem")
 	// read the certificate pem
 	cert, err := ioutil.ReadFile(filepath.Clean(certPath))
 	if err != nil {
