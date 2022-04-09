@@ -73,14 +73,14 @@ func Run_HttpServer(pem, key string) {
 	}
 
 	server := &http.Server{
-		Addr:    "0.0.0.0:1010",
+		Addr:    "0.0.0.0:8080",
 		Handler: h2c.NewHandler(router, h2Server),
 	}
 
 	if pem == "" || key == "" {
-		go server.ListenAndServe()
+		server.ListenAndServe()
 	} else {
-		go server.ListenAndServeTLS(pem, key)
+		server.ListenAndServeTLS(pem, key)
 	}
 
 	/*    로그
