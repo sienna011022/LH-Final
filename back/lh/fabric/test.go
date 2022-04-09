@@ -44,7 +44,7 @@ func populateWallet(wallet *gateway.Wallet) error {
 
 	identity := gateway.NewX509Identity("Org1MSP", string(cert), string(key))
 
-	err = wallet.Put("lh", identity)
+	err = wallet.Put("User1", identity)
 	if err != nil {
 		return err
 	}
@@ -75,13 +75,11 @@ func ConTest() {
 	fmt.Printf("ccp : %s\n11", filepath.Clean(ccpPath))
 	gw, err := gateway.Connect(
 		gateway.WithConfig(config.FromFile(filepath.Clean(ccpPath))),
-		gateway.WithIdentity(wallet, "lh"),
+		gateway.WithIdentity(wallet, "User1"),
 	)
 	if err != nil {
 		fmt.Printf("Failed to connect to gateway: %s\n", err)
 		os.Exit(1)
-	} else {
-		fmt.Printf(" gateway: %v\n", gw)
 	}
 	defer gw.Close()
 
