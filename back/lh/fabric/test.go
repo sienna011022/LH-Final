@@ -17,7 +17,7 @@ func ConTest() {
 		return
 	}
 
-	org1MspClient, err := mspclient.New(sdk1.Context(), mspclient.WithOrg("Org1"))
+	org1MspClient, err := mspclient.New(sdk1.Context(), mspclient.WithOrg("org1"))
 	if err != nil {
 		return
 	}
@@ -29,7 +29,7 @@ func ConTest() {
 		fmt.Print(err)
 		return
 	}
-	org2MspClient, err := mspclient.New(sdk2.Context(), mspclient.WithOrg("Org2"))
+	org2MspClient, err := mspclient.New(sdk2.Context(), mspclient.WithOrg("org2"))
 	if err != nil {
 		return
 	}
