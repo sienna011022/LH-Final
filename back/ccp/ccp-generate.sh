@@ -29,7 +29,7 @@ function yaml_ccp {
 # Where am I?
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-NET_DIR_PATH="${DIR}/../../network"
+NET_DIR_PATH="${DIR}/../../network/basic-network"
 
 ORG=1
 P0PORT=7051
@@ -50,11 +50,3 @@ echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ${DIR}/connection-org2
 echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ${DIR}/connection-org2.yaml
 
 
-ORG=3
-P0PORT=11051
-CAPORT=11054
-PEERPEM=${NET_DIR_PATH}/organizations/peerOrganizations/org3.example.com/tlsca/tlsca.org3.example.com-cert.pem
-CAPEM=${NET_DIR_PATH}/organizations/peerOrganizations/org3.example.com/ca/ca.org3.example.com-cert.pem
-
-echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ${DIR}/connection-org2.json
-echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ${DIR}/connection-org2.yaml

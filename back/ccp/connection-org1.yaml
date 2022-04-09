@@ -19,6 +19,21 @@ peers:
     url: grpcs://localhost:7051
     tlsCACerts:
       pem: |
+          -----BEGIN CERTIFICATE-----
+          MIICWDCCAf6gAwIBAgIRAPuPAULlnVQjCpymW7WcRJkwCgYIKoZIzj0EAwIwdjEL
+          MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+          cmFuY2lzY28xGTAXBgNVBAoTEG9yZzEuZXhhbXBsZS5jb20xHzAdBgNVBAMTFnRs
+          c2NhLm9yZzEuZXhhbXBsZS5jb20wHhcNMjIwNDA5MTUyMTAwWhcNMzIwNDA2MTUy
+          MTAwWjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE
+          BxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQb3JnMS5leGFtcGxlLmNvbTEfMB0G
+          A1UEAxMWdGxzY2Eub3JnMS5leGFtcGxlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49
+          AwEHA0IABH4kelindGrnbkhaIcJPSni7PrA1YVpr3DGUPkiGU9UDt14GnUpaxd35
+          +j9XbG4c1Lhcz8qCIrwWrTHlFU5oiJyjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNV
+          HSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNV
+          HQ4EIgQgNlcRxHkKjzTTPEJtAl4QELxy8z32y07ZuSWyj5cO9v0wCgYIKoZIzj0E
+          AwIDSAAwRQIgHNhFHP5Kzr9MMhe9cuN8scuIQrmf4J5XINXdU7O2ZYsCIQDfq3J+
+          6lfxa6MwJsjLwHNvwpVzA9G8EoM6SsN3rQdlwQ==
+          -----END CERTIFICATE-----
           
     grpcOptions:
       ssl-target-name-override: peer0.org1.example.com
@@ -30,6 +45,21 @@ certificateAuthorities:
     tlsCACerts:
       pem: 
         - |
+          -----BEGIN CERTIFICATE-----
+          MIICUTCCAfegAwIBAgIQLBM4bzgsONBhoFCMvBrSnTAKBggqhkjOPQQDAjBzMQsw
+          CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+          YW5jaXNjbzEZMBcGA1UEChMQb3JnMS5leGFtcGxlLmNvbTEcMBoGA1UEAxMTY2Eu
+          b3JnMS5leGFtcGxlLmNvbTAeFw0yMjA0MDkxNTIxMDBaFw0zMjA0MDYxNTIxMDBa
+          MHMxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1T
+          YW4gRnJhbmNpc2NvMRkwFwYDVQQKExBvcmcxLmV4YW1wbGUuY29tMRwwGgYDVQQD
+          ExNjYS5vcmcxLmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE
+          tEUqWfBT26gO/NFkaHn/Iym+fn57uIwEzdyNTaCp3b6xJqbPnxp0d47jOGq+uBEM
+          pAxZpTH8T1+O8FAmAFsDeKNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQG
+          CCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQiBCB6
+          x+p/dV0JNfg2yb0lo3teeE0As57Q4pBqLhqS6IklszAKBggqhkjOPQQDAgNIADBF
+          AiEAiF0DxBw5CFY7NCS4Bu0J08WO4Xp1DYXD3tFbo8DlvzQCIDgloKKo1medYwKZ
+          JuLr6Mw19D3+JPnuAGFOKkhH66B8
+          -----END CERTIFICATE-----
           
     httpOptions:
       verify: false
