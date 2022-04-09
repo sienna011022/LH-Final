@@ -29,6 +29,8 @@ func AddService(engine *gin.Engine) *gin.RouterGroup {
 			group.GET(route.Pattern, route.HandlerFunc)
 		case "POST":
 			group.POST(route.Pattern, route.HandlerFunc)
+		case "PUT":
+			group.PUT(route.Pattern, route.HandlerFunc)
 		}
 	}
 	return group
@@ -46,10 +48,59 @@ var routes = Routes{
 		"/",
 		Index,
 	},
+
+	{
+		"add user right/contact",
+		http.MethodPost,
+		"/init/:name/:id",
+		initial,
+	},
+	{
+		"right doc validation",
+		http.MethodGet,
+		"/valid/doc/right",
+		test,
+	},
+	{
+		"contract doc validation",
+		http.MethodGet,
+		"/valid/doc/contract",
+		test,
+	},
+
+	//right-user
+
+	{
+		"add document",
+		http.MethodPost,
+		"/right/doc/add/:name/:id/:docname",
+		uploadRightdoc,
+	},
+	{
+		"get document",
+		http.MethodGet,
+		"/right/state/",
+		test,
+	},
+	//right-lf
+	{
+		"get document",
+		http.MethodGet,
+		"/right/doc/read",
+		test,
+	},
 	{
 		"Service",
 		http.MethodGet,
-		"/test/",
+		"/right/status/change",
+		test,
+	},
+
+	//contract-lh
+	{
+		"Service",
+		http.MethodGet,
+		"/contract/doc/add",
 		test,
 	},
 }
