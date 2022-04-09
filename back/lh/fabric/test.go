@@ -16,13 +16,13 @@ func ConTest() {
 		return
 	}
 
-	org1MspClient, err := mspclient.New(sdk.Context(), mspclient.WithOrg("org1"))
+	org1MspClient, err := mspclient.New(sdk.Context(), mspclient.WithOrg("Org1"))
 	if err != nil {
 		return
 	}
 	fmt.Print(org1MspClient)
 
-	org2MspClient, err := mspclient.New(sdk.Context(), mspclient.WithOrg("org2"))
+	org2MspClient, err := mspclient.New(sdk.Context(), mspclient.WithOrg("Org2"))
 	if err != nil {
 		return
 	}
