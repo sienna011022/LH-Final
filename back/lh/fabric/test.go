@@ -85,4 +85,47 @@ func ConTest() {
 	}
 	defer gw.Close()
 
+	network, err := gw.GetNetwork("mychannel")
+	if err != nil {
+		fmt.Printf("Failed to get network: %s\n", err)
+		os.Exit(1)
+	}
+
+	contract := network.GetContract("basic")
+
+	result, err := contract.EvaluateTransaction("GetAllAssets")
+	if err != nil {
+		fmt.Printf("Failed to evaluate transaction: %s\n", err)
+		os.Exit(1)
+	}
+	fmt.Println(string(result))
+	/*
+		result, err = contract.SubmitTransaction("createCar", "CAR10", "VW", "Polo", "Grey", "Mary")
+		if err != nil {
+			fmt.Printf("Failed to submit transaction: %s\n", err)
+			os.Exit(1)
+		}
+		fmt.Println(string(result))
+
+		result, err = contract.EvaluateTransaction("queryCar", "CAR10")
+		if err != nil {
+			fmt.Printf("Failed to evaluate transaction: %s\n", err)
+			os.Exit(1)
+		}
+		fmt.Println(string(result))
+
+		_, err = contract.SubmitTransaction("changeCarOwner", "CAR10", "Archie")
+		if err != nil {
+			fmt.Printf("Failed to submit transaction: %s\n", err)
+			os.Exit(1)
+		}
+
+		result, err = contract.EvaluateTransaction("queryCar", "CAR10")
+		if err != nil {
+			fmt.Printf("Failed to evaluate transaction: %s\n", err)
+			os.Exit(1)
+		}
+		fmt.Println(string(result))
+	*/
+
 }
