@@ -2,31 +2,37 @@ package fabric
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 
-	mspclient "github.com/hyperledger/fabric-sdk-go/pkg/client/msp"
 	"github.com/hyperledger/fabric-sdk-go/pkg/core/config"
-	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hyperledger/fabric-sdk-go/pkg/gateway"
 )
 
+var ccproot string = "/root/teamate/BS22_class-examples/teamate/application/ccp/"
+
 func ConTest() {
-	cfgProvider := config.FromFile("/root/teamate/BS22_class-examples/teamate/application/ccp/connection-org1.yaml")
-
-	sdk, err := fabsdk.New(cfgProvider)
+	wallet, err := gateway.NewFileSystemWallet("wallet")
 	if err != nil {
-		fmt.Print(err, "\n")
-		return
+		fmt.Printf("Failed to create wallet: %s\n", err)
+		os.Exit(1)
 	}
 
-	org1MspClient, err := mspclient.New(sdk.Context(), mspclient.WithOrg("org1"))
-	if err != nil {
-		return
-	}
-	fmt.Print(org1MspClient)
+	// Path to the network config (CCP) file
+	ccpPath := filepath.Join(
+		ccproot,
+		"connection-org1.yaml",
+	)
 
-	org2MspClient, err := mspclient.New(sdk.Context(), mspclient.WithOrg("org2"))
+	// Connect to the gateway peer(s) using the network config and identity in the wallet
+	gw, err := gateway.Connect(
+		gateway.WithConfig(config.FromFile(filepath.Clean(ccpPath))),
+		gateway.WithIdentity(wallet, "appUser"),
+	)
 	if err != nil {
-		return
+		fmt.Printf("Failed to connect to gateway: %s\n", err)
+		os.Exit(1)
 	}
-	fmt.Print(org2MspClient)
+	defer gw.Close()
 
 }
