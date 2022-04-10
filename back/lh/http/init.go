@@ -80,7 +80,7 @@ func uploadRightdoc(c *gin.Context) {
 	req := NewRequest(c.Request, c.Request.Body)
 	req.Params["name"] = c.Params.ByName("name")
 	req.Params["id"] = c.Params.ByName("id")
-	req.Params["id"] = c.Params.ByName("docname")
+	req.Params["docname"] = c.Params.ByName("docname")
 	rsp := HandleuploadRightdocRequest(req)
 
 	responseBody, err := json.Marshal(rsp.Body)
