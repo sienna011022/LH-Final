@@ -22,7 +22,8 @@ func initial(c *gin.Context) {
 	setCorsHeader(c)
 
 	req := NewRequest(c.Request, nil)
-
+	req.Params["name"] = c.Params.ByName("name")
+	req.Params["id"] = c.Params.ByName("id")
 	rsp := HandleinitialRequest(req)
 
 	responseBody, err := json.Marshal(rsp.Body)
