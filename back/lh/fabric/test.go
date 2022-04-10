@@ -11,6 +11,9 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/gateway"
 )
 
+var wallet *gateway.Wallet
+var ccproot string = "../ccp/"
+
 func populateWallet(wallet *gateway.Wallet) error {
 	credPath := filepath.Join(
 
@@ -50,8 +53,6 @@ func populateWallet(wallet *gateway.Wallet) error {
 	}
 	return nil
 }
-
-var ccproot string = "../ccp/"
 
 func ConTest() {
 
