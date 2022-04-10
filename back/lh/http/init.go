@@ -69,6 +69,7 @@ func initialProcedure(name, id string) *ProblemDetails {
 			Cause:  "fabric fail",
 		}
 	}
+	fmt.Printf("Handle initialProcedure end\n")
 	return nil
 }
 
