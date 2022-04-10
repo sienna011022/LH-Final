@@ -155,7 +155,7 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 	h := sha256.New()
 	h.Write(filecontent)
 	hash := hex.EncodeToString(h.Sum(nil))
-	err = fabric.UpdateRightDoc(key, name, docname, fmt.Sprintf("%d", doc_count), hash, "User1")
+	err = fabric.UpdateRightDoc(key, name, docname, fmt.Sprintf("%d", doc_count), hash, "User1_org1")
 	if err != nil {
 
 		return &ProblemDetails{
