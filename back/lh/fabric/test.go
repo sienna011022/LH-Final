@@ -89,9 +89,9 @@ func ConTest() {
 		os.Exit(1)
 	}
 
-	contract := network.GetContract("basic")
+	contract := network.GetContract("request")
 
-	result, err := contract.EvaluateTransaction("GetAllAssets")
+	result, err := contract.EvaluateTransaction("ReadContract", "1023")
 	if err != nil {
 		fmt.Printf("Failed to evaluate transaction: %s\n", err)
 		os.Exit(1)
