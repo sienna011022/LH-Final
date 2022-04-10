@@ -136,7 +136,7 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 	}
 	key := fmt.Sprintf("%s-%s", name, id)
 	savepath := fmt.Sprintf("%s/%s/%s", file_path, key, docname)
-	file, err := os.OpenFile(savepath, os.O_CREATE|os.O_RDWR|os.O_TRUNC, os.FileMode(0644))
+	file, err := os.OpenFile(savepath, os.O_CREATE|os.O_RDWR, os.FileMode(0644))
 	if err != nil {
 		return &ProblemDetails{
 			Status: 500,
