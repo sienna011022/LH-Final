@@ -11,7 +11,7 @@ import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/gateway"
 )
 
-var wallet *gateway.Wallet
+var gwallet *gateway.Wallet
 var ccproot string = "../ccp/"
 
 func populateWallet(wallet *gateway.Wallet) error {
@@ -61,6 +61,7 @@ func ConTest() {
 		fmt.Printf("Failed to create wallet: %s\n", err)
 		os.Exit(1)
 	}
+	gwallet = wallet
 	err = populateWallet(wallet)
 	if err != nil {
 		fmt.Printf("Failed to connect to gateway: %s\n", err)

@@ -23,7 +23,7 @@ func GetCC(org, iden_label, channel, CCName string) *gateway.Contract {
 	)
 	gw, err := gateway.Connect(
 		gateway.WithConfig(config.FromFile(filepath.Clean(ccpPath))),
-		gateway.WithIdentity(wallet, iden_label),
+		gateway.WithIdentity(gwallet, iden_label),
 	)
 	if err != nil {
 		fmt.Printf("Failed to connect to gateway: %s\n", err)
