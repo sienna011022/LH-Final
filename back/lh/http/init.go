@@ -66,7 +66,7 @@ func initialProcedure(name, id string) *ProblemDetails {
 
 		return &ProblemDetails{
 			Status: 500,
-			Cause:  "fabric fail",
+			Cause:  err.Error(),
 		}
 	}
 	fmt.Printf("Handle initialProcedure end\n")
