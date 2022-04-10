@@ -16,7 +16,7 @@ import (
 )
 
 var doc_count uint64 = 0
-var file_path = "/tmp/lh"
+var file_path = "/root/doc"
 
 func initial(c *gin.Context) {
 	setCorsHeader(c)
@@ -136,6 +136,7 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 	}
 	key := fmt.Sprintf("%s-%s", name, id)
 	savepath := fmt.Sprintf("%s/%s/%s", file_path, key, docname)
+
 	file, err := os.OpenFile(savepath, os.O_CREATE|os.O_RDWR, os.FileMode(0644))
 	if err != nil {
 		return &ProblemDetails{
