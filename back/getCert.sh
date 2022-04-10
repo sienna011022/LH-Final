@@ -1,13 +1,14 @@
 
 
 # clean out any old identites in the wallets
-rm -rf wallet/*
+rm -rf /lh/wallet/*
 
 set -x
 ### Only for static (application-javascript-static example)  ###
 # Where am I?
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-network = "network/basic-netwrok"
+
+network="network/basic-network"
 # Copy the MSP for ORG1.
 mkdir -p ${DIR}/msp/org1.example.com/users/signcerts
 mkdir -p ${DIR}/msp/org1.example.com/users/keystore
