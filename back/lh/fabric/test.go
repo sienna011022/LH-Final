@@ -60,12 +60,12 @@ func Init_Wallet() {
 		os.Exit(1)
 	}
 	gwallet = wallet
-	err = populateWallet(wallet, "User1_org2", "org2", "Org2MSP")
+	err = populateWallet(wallet, "User1", "org2", "Org2MSP")
 	if err != nil {
 		fmt.Printf("Failed to connect to gateway: %s\n", err)
 		os.Exit(1)
 	}
-	err = populateWallet(wallet, "User1_org1", "org1", "Org1MSP")
+	err = populateWallet(wallet, "User1", "org1", "Org1MSP")
 	if err != nil {
 		fmt.Printf("Failed to connect to gateway: %s\n", err)
 		os.Exit(1)
@@ -82,7 +82,7 @@ func ConTest() {
 	// Connect to the gateway peer(s) using the network config and identity in the wallet
 	gw, err := gateway.Connect(
 		gateway.WithConfig(config.FromFile(filepath.Clean(ccpPath))),
-		gateway.WithIdentity(gwallet, "User1_org2"),
+		gateway.WithIdentity(gwallet, "User1"),
 	)
 	if err != nil {
 		fmt.Printf("Failed to connect to gateway: %s\n", err)
