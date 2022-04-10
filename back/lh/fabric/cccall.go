@@ -47,7 +47,6 @@ type Ret struct {
 }
 
 func InitUser(key, name, status, cert1, cert2 string) error {
-	var Init_ret Ret
 	result, err := GetCC(org1, cert1, channel_right, CC).SubmitTransaction("AddUser", key, name, status)
 	if err != nil {
 		return fmt.Errorf("CC fail[%s]", err.Error())
