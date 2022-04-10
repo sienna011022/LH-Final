@@ -78,7 +78,9 @@ func uploadRightdoc(c *gin.Context) {
 	setCorsHeader(c)
 
 	req := NewRequest(c.Request, c.Request.Body)
-
+	req.Params["name"] = c.Params.ByName("name")
+	req.Params["id"] = c.Params.ByName("id")
+	req.Params["id"] = c.Params.ByName("docname")
 	rsp := HandleuploadRightdocRequest(req)
 
 	responseBody, err := json.Marshal(rsp.Body)
@@ -97,7 +99,7 @@ func uploadRightdoc(c *gin.Context) {
 
 func HandleuploadRightdocRequest(request *Request) *Response {
 
-	log.Printf("test")
+	log.Printf("HandleuploadRightdocRequest\n")
 	name := request.Params["name"]
 	id := request.Params["id"]
 	docname := request.Params["docname"]
