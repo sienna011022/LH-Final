@@ -11,6 +11,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -138,7 +139,7 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 	fmt.Println(key, "   ", id)
 	savepath := fmt.Sprintf("%s/%s/%s", file_path, key, docname)
 	file, err := os.OpenFile(savepath, os.O_CREATE|os.O_RDWR, os.FileMode(0644))
-	if err.Error() == "no such file or directory" {
+	if strings.Contains(err.Error(), "no such file or directory") {
 		os.MkdirAll(fmt.Sprintf("%s/%s", file_path, key), os.FileMode(0644))
 		file, err = os.OpenFile(savepath, os.O_CREATE|os.O_RDWR, os.FileMode(0644))
 	}
