@@ -16,7 +16,7 @@ import (
 )
 
 var doc_count uint64 = 0
-var file_path = "/root/doc"
+var file_path = "~/doc"
 
 func initial(c *gin.Context) {
 	setCorsHeader(c)
