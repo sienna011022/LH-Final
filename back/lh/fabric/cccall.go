@@ -30,7 +30,7 @@ func GetCC(org, iden_label, channel, CCName string) *gateway.Contract {
 		os.Exit(1)
 	}
 	defer gw.Close()
-	fmt.Print(gw)
+
 	network, err := gw.GetNetwork(channel)
 	if err != nil {
 		fmt.Printf("Failed to get network: %s\n", err)

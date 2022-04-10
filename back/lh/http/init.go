@@ -60,7 +60,7 @@ func HandleinitialRequest(request *Request) *Response {
 	return NewResponse(http.StatusForbidden, nil, problemDetails)
 }
 func initialProcedure(name, id string) *ProblemDetails {
-	fmt.Printf("Handle initialProcedure")
+	fmt.Printf("Handle initialProcedure\n")
 	err := fabric.InitUser(fmt.Sprintf("%s-%s", name, id), "User1_org1", "User1_org2")
 	if err != nil {
 
