@@ -58,13 +58,13 @@ var routes = Routes{
 	{
 		"right doc validation",
 		http.MethodGet,
-		"/valid/doc/right",
-		test,
+		"/get/right/:name/:id",
+		getRight,
 	},
 	{
 		"contract doc validation",
 		http.MethodGet,
-		"/valid/doc/contract",
+		"/get/contract/:name/:id",
 		test,
 	},
 

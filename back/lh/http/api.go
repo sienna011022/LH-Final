@@ -166,3 +166,61 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 	doc_count++
 	return nil
 }
+
+func getRight(c *gin.Context) {
+	setCorsHeader(c)
+
+	req := NewRequest(c.Request, c.Request.Body)
+	req.Params["name"] = c.Params.ByName("name")
+	req.Params["id"] = c.Params.ByName("id")
+	rsp := HandlegetRightRequest(req)
+
+	responseBody, err := json.Marshal(rsp.Body)
+	if err != nil {
+		log.Println(err)
+		problemDetails := ProblemDetails{
+			Status: http.StatusInternalServerError,
+			Cause:  "SYSTEM_FAILURE",
+			Detail: err.Error(),
+		}
+		c.JSON(http.StatusInternalServerError, problemDetails)
+	} else {
+		c.Data(rsp.Status, "application/json", responseBody)
+	}
+}
+
+func HandlegetRightRequest(request *Request) *Response {
+
+	log.Printf("HandleuploadRightdocRequest\n")
+	name := request.Params["name"]
+	id := request.Params["id"]
+
+	b, problemDetails := getRightProcedure(name, id)
+
+	if problemDetails == nil {
+		return NewResponse(http.StatusOK, nil, b)
+	} else if problemDetails != nil {
+		return NewResponse(int(problemDetails.Status), nil, problemDetails)
+	}
+
+	problemDetails = &ProblemDetails{
+		Status: http.StatusForbidden,
+		Cause:  "UNSPECIFIED",
+	}
+
+	return NewResponse(http.StatusForbidden, nil, problemDetails)
+}
+func getRightProcedure(name, id string) ([]byte, *ProblemDetails) {
+	fmt.Printf("Handle uploadRightdocProcedure\n")
+	key := fmt.Sprintf("%s-%s", name, id)
+	bs, err := fabric.GetRight(key, "User1_org1")
+	if err != nil {
+
+		return nil, &ProblemDetails{
+			Status: 500,
+			Cause:  err.Error(),
+		}
+	}
+
+	return bs, nil
+}

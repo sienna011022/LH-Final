@@ -105,18 +105,14 @@ func UpdateRightState(key, status, cert string) error {
 	return nil
 }
 
-func GetRightState(key, cert string) (string, error) {
-	var Get_ret Ret
-	result, err := GetCC(org1, cert, channel_right, CC).EvaluateTransaction("RequestState", key)
+func GetRight(key, cert string) ([]byte, error) {
+
+	result, err := GetCC(org1, cert, channel_right, CC).EvaluateTransaction("ReadContract", key)
 	if err != nil {
-		return "", fmt.Errorf("CC fail[%s]", err.Error())
-	}
-	err = json.Unmarshal(result, &Get_ret)
-	if err != nil {
-		return "", fmt.Errorf("AddUser fail[%s]", err.Error())
+		return nil, fmt.Errorf("CC fail[%s]", err.Error())
 	}
 
-	return Get_ret.Result, nil
+	return result, nil
 }
 
 func GetRightDoc(key, cert string) (string, error) {
