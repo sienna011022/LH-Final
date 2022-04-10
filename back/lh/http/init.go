@@ -61,7 +61,7 @@ func HandleinitialRequest(request *Request) *Response {
 }
 func initialProcedure(name, id string) *ProblemDetails {
 	fmt.Printf("Handle initialProcedure")
-	err := fabric.InitUser(fmt.Sprintf("%s-%s", name, id), "User1", "User1")
+	err := fabric.InitUser(fmt.Sprintf("%s-%s", name, id), "User1_org1", "User1_org2")
 	if err != nil {
 
 		return &ProblemDetails{
