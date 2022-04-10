@@ -52,33 +52,30 @@ func InitUser(key, name, status, cert1, cert2 string) error {
 	if err != nil {
 		return fmt.Errorf("CC fail[%s]", err.Error())
 	}
-	err = json.Unmarshal(result, &Init_ret)
-	if Init_ret.Result != "succes" || err != nil {
-		return fmt.Errorf("AddUser fail[%s]", err.Error())
+
+	if result != nil {
+		return fmt.Errorf("AddUser fail[%s]", string(result))
 	}
 	result, err = GetCC(org1, cert1, channel_contract, CC).SubmitTransaction("AddUser", key, name, status)
 	if err != nil {
 		return fmt.Errorf("CC fail[%s]", err.Error())
 	}
-	err = json.Unmarshal(result, &Init_ret)
-	if Init_ret.Result != "succes" || err != nil {
-		return fmt.Errorf("AddUser fail[%s]", err.Error())
+	if result != nil {
+		return fmt.Errorf("AddUser fail[%s]", string(result))
 	}
 	result, err = GetCC(org2, cert2, channel_right, CC).SubmitTransaction("AddUser", key, name, status)
 	if err != nil {
 		return fmt.Errorf("CC fail[%s]", err.Error())
 	}
-	err = json.Unmarshal(result, &Init_ret)
-	if Init_ret.Result != "succes" || err != nil {
-		return fmt.Errorf("AddUser fail[%s]", err.Error())
+	if result != nil {
+		return fmt.Errorf("AddUser fail[%s]", string(result))
 	}
 	result, err = GetCC(org2, cert2, channel_contract, CC).SubmitTransaction("AddUser", key, name, status)
 	if err != nil {
 		return fmt.Errorf("CC fail[%s]", err.Error())
 	}
-	err = json.Unmarshal(result, &Init_ret)
-	if Init_ret.Result != "succes" || err != nil {
-		return fmt.Errorf("AddUser fail[%s]", err.Error())
+	if result != nil {
+		return fmt.Errorf("AddUser fail[%s]", string(result))
 	}
 
 	return nil
