@@ -41,7 +41,6 @@ func initial(c *gin.Context) {
 
 func HandleinitialRequest(request *Request) *Response {
 
-	log.Printf("test")
 	name := request.Params["name"]
 	id := request.Params["id"]
 

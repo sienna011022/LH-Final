@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-
+	//DISCOVERY_AS_LOCALHOST=TRUE  필수[env]
 	fabric.ConTest()
 	http.Run_HttpServer("", "")
 
