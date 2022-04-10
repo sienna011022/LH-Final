@@ -66,7 +66,7 @@ func NewResponse(code int, h http.Header, body interface{}) (ret *Response) {
 	if ret.Body != nil {
 		pBody, err := json.MarshalIndent(ret.Body, "", "  ")
 		if err == nil {
-			log.Println(pBody)
+			log.Println(string(pBody))
 		}
 	}
 
