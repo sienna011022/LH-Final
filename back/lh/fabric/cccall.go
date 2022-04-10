@@ -12,8 +12,8 @@ import (
 
 const org1 = "org1"
 const org2 = "org2"
-const channel_right = "mychannl"
-const channel_contract = "mychannl"
+const channel_right = "mychannel"
+const channel_contract = "mychannel"
 const CC = "CC_NAME"
 
 func GetCC(org, iden_label, channel, CCName string) *gateway.Contract {
