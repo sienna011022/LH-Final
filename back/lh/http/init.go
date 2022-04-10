@@ -117,7 +117,7 @@ func HandleuploadRightdocRequest(request *Request) *Response {
 	return NewResponse(http.StatusForbidden, nil, problemDetails)
 }
 func uploadRightdocProcedure(name, id, docname string, Body interface{}) *ProblemDetails {
-	fmt.Printf("Handle uploadRightdocProcedure")
+	fmt.Printf("Handle uploadRightdocProcedure\n")
 	b, ok := Body.(io.ReadCloser)
 	if !ok {
 		return &ProblemDetails{
@@ -129,6 +129,7 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 
 		return &ProblemDetails{
 			Status: 500,
+			Cause:  err.Error(),
 		}
 	}
 	key := fmt.Sprintf("%s-%s", name, id)
@@ -137,6 +138,7 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 	if err != nil {
 		return &ProblemDetails{
 			Status: 500,
+			Cause:  err.Error(),
 		}
 	}
 	defer file.Close()
@@ -150,7 +152,7 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 
 		return &ProblemDetails{
 			Status: 500,
-			Cause:  "fabric fail",
+			Cause:  err.Error(),
 		}
 	}
 	doc_count++
