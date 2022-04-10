@@ -81,14 +81,12 @@ func InitUser(key, name, status, cert1, cert2 string) error {
 }
 
 func UpdateRightDoc(key, name, docu_name, docu_id, hash, cert string) error {
-	var Update_ret Ret
 	result, err := GetCC(org1, cert, channel_right, CC).SubmitTransaction("AddContract", key, name, docu_id, docu_name, hash)
 	if err != nil {
 		return fmt.Errorf("CC fail[%s]", err.Error())
 	}
-	err = json.Unmarshal(result, &Update_ret)
-	if Update_ret.Result != "succes" || err != nil {
-		return fmt.Errorf("AddUser fail[%s]", err.Error())
+	if result != nil {
+		return fmt.Errorf("AddUser fail[%s]", string(result))
 	}
 
 	return nil

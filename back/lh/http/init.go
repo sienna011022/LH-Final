@@ -152,7 +152,6 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 	}
 	defer file.Close()
 	file.Write(filecontent)
-	log.Println(1)
 	h := sha256.New()
 	h.Write(filecontent)
 	hash := hex.EncodeToString(h.Sum(nil))
@@ -164,7 +163,6 @@ func uploadRightdocProcedure(name, id, docname string, Body interface{}) *Proble
 			Cause:  err.Error(),
 		}
 	}
-	log.Println(1)
 	doc_count++
 	return nil
 }
