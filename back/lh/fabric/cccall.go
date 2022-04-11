@@ -1,7 +1,6 @@
 package fabric
 
 import (
-	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -111,50 +110,4 @@ func GetRight(key, cert string) ([]byte, error) {
 	}
 
 	return result, nil
-}
-
-func GetRightDoc(key, cert string) (string, error) {
-	/*
-		var Get_ret Ret
-		result, err := GetCC(org1, cert, channel_right, CC).EvaluateTransaction("ReadContract", key)
-		if err != nil {
-			return "", fmt.Errorf("CC fail[%s]", err.Error())
-		}
-
-			err = json.Unmarshal(result, &Get_ret)
-			if err != nil {
-				return "", fmt.Errorf("AddUser fail[%s]", err.Error())
-			}
-	*/
-	return "", nil
-}
-
-func UpdateContactDoc(key, name, docu_name, contract_id, hash, cert string) error {
-	var Update_ret Ret
-	result, err := GetCC(org1, cert, channel_contract, CC).SubmitTransaction("UpdateContract", key, name, contract_id, docu_name, hash)
-	if err != nil {
-		return fmt.Errorf("CC fail[%s]", err.Error())
-	}
-	err = json.Unmarshal(result, &Update_ret)
-	if Update_ret.Result != "succes" || err != nil {
-		return fmt.Errorf("AddUser fail[%s]", err.Error())
-	}
-
-	return nil
-}
-
-func GetContractDoc(key, name, docu_name, contract_id, hash, cert string) (string, error) {
-	/*
-		var Get_ret Ret
-		result, err := GetCC(org1, cert, channel_right, CC).EvaluateTransaction("ReadContract", key)
-		if err != nil {
-			return "", fmt.Errorf("CC fail[%s]", err.Error())
-		}
-
-			err = json.Unmarshal(result, &Get_ret)
-			if err != nil {
-				return "", fmt.Errorf("AddUser fail[%s]", err.Error())
-			}
-	*/
-	return "", nil
 }
