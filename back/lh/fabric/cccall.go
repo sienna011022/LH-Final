@@ -62,7 +62,7 @@ func InitUser(key, name, status, cert1, cert2 string) error {
 }
 
 func UpdateRightDoc(key, name, docu_name, docu_id, hash, cert string) error {
-	result, err := GetCC(org1, cert, channel_right, CC).SubmitTransaction("AddContract", key, name, docu_id, docu_name, hash)
+	result, err := GetCC(org2, cert, channel_right, CC).SubmitTransaction("AddContract", key, name, docu_id, docu_name, hash)
 	if err != nil {
 		return fmt.Errorf("CC fail[%s]", err.Error())
 	}
@@ -73,7 +73,7 @@ func UpdateRightDoc(key, name, docu_name, docu_id, hash, cert string) error {
 	return nil
 }
 func UpdateRightState(key, status, cert string) error {
-	result, err := GetCC(org2, cert, channel_right, CC).SubmitTransaction("UpdateState", key, status)
+	result, err := GetCC(org1, cert, channel_right, CC).SubmitTransaction("UpdateState", key, status)
 	if err != nil {
 		return fmt.Errorf("CC fail[%s]", err.Error())
 	}
