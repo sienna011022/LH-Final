@@ -8,7 +8,7 @@ set -x
 # Where am I?
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-network="network/basic-network"
+network="network/RequestProcess"
 # Copy the MSP for ORG1.
 mkdir -p ${DIR}/msp/org1.example.com/users/signcerts
 mkdir -p ${DIR}/msp/org1.example.com/users/keystore

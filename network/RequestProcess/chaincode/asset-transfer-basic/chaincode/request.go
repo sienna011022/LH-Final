@@ -79,6 +79,44 @@ func (s *SmartContract) AddContract(ctx contractapi.TransactionContextInterface,
 	return nil
 
 }
+
+func (s *SmartContract) UpdateState(ctx contractapi.TransactionContextInterface, key string, newstate string) error {
+
+	contractAsBytes, err := ctx.GetStub().GetState(key)
+
+	if err != nil {
+		return err
+	} else if contractAsBytes == nil {
+		return fmt.Errorf("User does not exist " + key + "/")
+	}
+
+	contract := RightProcess{}
+	err = json.Unmarshal(contractAsBytes, &contract)
+
+	if err != nil {
+		return err
+	}
+
+	contract.State = newstate
+
+	contractAsBytes, err = json.Marshal(contract)
+
+	return ctx.GetStub().PutState(key, contractAsBytes)
+
+	if err != nil {
+		return fmt.Errorf("failed to Marshaling:%v", err)
+
+	}
+
+	err = ctx.GetStub().PutState(key, contractAsBytes)
+
+	if err != nil {
+		return fmt.Errorf("failed to AddContract %v", err)
+
+	}
+
+	return nil
+}
 func (s *SmartContract) ReadContract(ctx contractapi.TransactionContextInterface, key string) (string, error) {
 	//get value from ctx
 	contractAsBytes, err := ctx.GetStub().GetState(key)
