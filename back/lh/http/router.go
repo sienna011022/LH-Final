@@ -72,6 +72,6 @@ var routes = Routes{
 		"right doc validation",
 		http.MethodPut,
 		"/right/state/change/:name/:id/:statevalue",
-		getRight,
+		changeRightstate,
 	},
 }
