@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	os.Setenv("TESTTEST", "XX")
+	os.Setenv("TESTTEST", "xx")
 
 	fmt.Println(os.Getenv("TESTTEST"))
 	//DISCOVERY_AS_LOCALHOST=TRUE  필수[env]
