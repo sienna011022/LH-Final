@@ -61,14 +61,6 @@ var routes = Routes{
 		"/get/right/:name/:id",
 		getRight,
 	},
-	{
-		"contract doc validation",
-		http.MethodGet,
-		"/get/contract/:name/:id",
-		test,
-	},
-
-	//right-user
 
 	{
 		"add document",
@@ -77,30 +69,9 @@ var routes = Routes{
 		uploadRightdoc,
 	},
 	{
-		"get document",
-		http.MethodGet,
-		"/right/state/",
-		test,
-	},
-	//right-lf
-	{
-		"get document",
-		http.MethodGet,
-		"/right/doc/read",
-		test,
-	},
-	{
-		"Service",
-		http.MethodGet,
-		"/right/state/change",
-		test,
-	},
-
-	//contract-lh
-	{
-		"Service",
-		http.MethodGet,
-		"/contract/doc/add",
-		test,
+		"right doc validation",
+		http.MethodPut,
+		"/right/state/change/:name/:id/:statevalue",
+		getRight,
 	},
 }

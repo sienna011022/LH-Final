@@ -226,3 +226,64 @@ func getRightProcedure(name, id string) (*RightProcess, *ProblemDetails) {
 	json.Unmarshal(bs, &ret)
 	return ret, nil
 }
+
+func changeRightstate(c *gin.Context) {
+	setCorsHeader(c)
+
+	req := NewRequest(c.Request, c.Request.Body)
+	req.Params["name"] = c.Params.ByName("name")
+	req.Params["id"] = c.Params.ByName("id")
+	req.Params["statevalue"] = c.Params.ByName("statevalue")
+	rsp := HandlechangeRightstate(req)
+
+	responseBody, err := json.Marshal(rsp.Body)
+	if err != nil {
+		log.Println(err)
+		problemDetails := ProblemDetails{
+			Status: http.StatusInternalServerError,
+			Cause:  "SYSTEM_FAILURE",
+			Detail: err.Error(),
+		}
+		c.JSON(http.StatusInternalServerError, problemDetails)
+	} else {
+		c.Data(rsp.Status, "application/json", responseBody)
+	}
+}
+
+func HandlechangeRightstate(request *Request) *Response {
+
+	log.Printf("Handle changeRightstate\n")
+	name := request.Params["name"]
+	id := request.Params["id"]
+	statevalue := request.Params["statevalue"]
+	ret, problemDetails := changeRightstateProcedure(name, id, statevalue)
+
+	if problemDetails == nil {
+		return NewResponse(http.StatusOK, nil, ret)
+	} else if problemDetails != nil {
+		return NewResponse(int(problemDetails.Status), nil, problemDetails)
+	}
+
+	problemDetails = &ProblemDetails{
+		Status: http.StatusForbidden,
+		Cause:  "UNSPECIFIED",
+	}
+
+	return NewResponse(http.StatusForbidden, nil, problemDetails)
+}
+func changeRightstateProcedure(name, id, statevalue string) (*RightProcess, *ProblemDetails) {
+	fmt.Printf("changeRightstateProcedure\n")
+	key := fmt.Sprintf("%s-%s", name, id)
+	bs, err := fabric.GetRight(key, "User1_org1")
+	if err != nil {
+
+		return nil, &ProblemDetails{
+			Status: 500,
+			Cause:  err.Error(),
+		}
+	}
+	var ret *RightProcess
+
+	json.Unmarshal(bs, &ret)
+	return ret, nil
+}
