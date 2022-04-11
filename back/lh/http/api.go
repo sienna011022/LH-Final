@@ -256,10 +256,10 @@ func HandlechangeRightstate(request *Request) *Response {
 	name := request.Params["name"]
 	id := request.Params["id"]
 	statevalue := request.Params["statevalue"]
-	ret, problemDetails := changeRightstateProcedure(name, id, statevalue)
+	problemDetails := changeRightstateProcedure(name, id, statevalue)
 
 	if problemDetails == nil {
-		return NewResponse(http.StatusOK, nil, ret)
+		return NewResponse(http.StatusOK, nil, nil)
 	} else if problemDetails != nil {
 		return NewResponse(int(problemDetails.Status), nil, problemDetails)
 	}
