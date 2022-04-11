@@ -271,19 +271,17 @@ func HandlechangeRightstate(request *Request) *Response {
 
 	return NewResponse(http.StatusForbidden, nil, problemDetails)
 }
-func changeRightstateProcedure(name, id, statevalue string) (*RightProcess, *ProblemDetails) {
+func changeRightstateProcedure(name, id, statevalue string) *ProblemDetails {
 	fmt.Printf("changeRightstateProcedure\n")
 	key := fmt.Sprintf("%s-%s", name, id)
-	bs, err := fabric.GetRight(key, "User1_org1")
+	err := fabric.UpdateRightState(key, statevalue, "User1_org1")
 	if err != nil {
 
-		return nil, &ProblemDetails{
+		return &ProblemDetails{
 			Status: 500,
 			Cause:  err.Error(),
 		}
 	}
-	var ret *RightProcess
 
-	json.Unmarshal(bs, &ret)
-	return ret, nil
+	return nil
 }
