@@ -195,10 +195,10 @@ func HandlegetRightRequest(request *Request) *Response {
 	name := request.Params["name"]
 	id := request.Params["id"]
 
-	b, problemDetails := getRightProcedure(name, id)
+	ret, problemDetails := getRightProcedure(name, id)
 
 	if problemDetails == nil {
-		return NewResponse(http.StatusOK, nil, b)
+		return NewResponse(http.StatusOK, nil, ret)
 	} else if problemDetails != nil {
 		return NewResponse(int(problemDetails.Status), nil, problemDetails)
 	}
@@ -210,7 +210,7 @@ func HandlegetRightRequest(request *Request) *Response {
 
 	return NewResponse(http.StatusForbidden, nil, problemDetails)
 }
-func getRightProcedure(name, id string) ([]byte, *ProblemDetails) {
+func getRightProcedure(name, id string) (*RightProcess, *ProblemDetails) {
 	fmt.Printf("Handle uploadRightdocProcedure\n")
 	key := fmt.Sprintf("%s-%s", name, id)
 	bs, err := fabric.GetRight(key, "User1_org1")
@@ -221,6 +221,8 @@ func getRightProcedure(name, id string) ([]byte, *ProblemDetails) {
 			Cause:  err.Error(),
 		}
 	}
+	var ret *RightProcess
 
-	return bs, nil
+	json.Unmarshal(bs, &ret)
+	return ret, nil
 }

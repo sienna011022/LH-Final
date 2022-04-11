@@ -92,7 +92,7 @@ var routes = Routes{
 	{
 		"Service",
 		http.MethodGet,
-		"/right/status/change",
+		"/right/state/change",
 		test,
 	},
 

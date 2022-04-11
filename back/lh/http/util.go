@@ -96,3 +96,15 @@ type ProblemDetails struct {
 	// Description of invalid parameters, for a request rejected due to invalid parameters.
 	InvalidParams []InvalidParam `json:"invalidParams,omitempty" yaml:"invalidParams" bson:"invalidParams" mapstructure:"InvalidParams"`
 }
+type RightProcess struct {
+	Key       string     `json:"key"`
+	Name      string     `json:"name"`
+	State     string     `json:"state"`
+	Contracts []Contract `json:"Contracts"`
+}
+
+type Contract struct {
+	Docu_id       uint64 `json:"docu_id"`
+	Docu_name     string `json:"docu_name"`
+	Document_hash string `json:"document_hash"`
+}
