@@ -92,10 +92,7 @@ func UpdateRightDoc(key, name, docu_name, docu_id, hash, cert string) error {
 	return nil
 }
 func UpdateRightState(key, status, cert string) error {
-	result, err := GetCC(org2, cert, channel_right, CC).SubmitTransaction("UpdateState", key, status)
-	if err != nil {
-		return fmt.Errorf("CC fail[%s]", err.Error())
-	}
+	result, err := GetCC(org1, cert, channel_right, CC).SubmitTransaction("UpdateState", key, status)
 	if err != nil {
 		return fmt.Errorf("CC fail[%s]", err.Error())
 	}
