@@ -13,3 +13,6 @@
         - 권리분석 승인 (법무법인 → 청년)
         - 매물 계약 (청년 → LH)
     - 결과: 권리분석 과정 구현 완료
+
+
+Notion: https://tested-sailfish-a0c.notion.site/LH-zip-5ed6303eb02e40879060b476830a0810
